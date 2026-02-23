@@ -1620,20 +1620,7 @@
 
             croppedCtx.drawImage(canvas, finalX, finalY, finalW, finalH, 0, 0, finalW, finalH);
 
-            // Apply contrast enhancement
-            const croppedData = croppedCtx.getImageData(0, 0, finalW, finalH);
-            const d = croppedData.data;
-            const contrast = 1.2; // Increase contrast by 20%
-            const intercept = 128 * (1 - contrast);
-
-            for (let i = 0; i < d.length; i += 4) {
-                d[i] = d[i] * contrast + intercept; // R
-                d[i + 1] = d[i + 1] * contrast + intercept; // G
-                d[i + 2] = d[i + 2] * contrast + intercept; // B
-                // A remains unchanged
-            }
-
-            croppedCtx.putImageData(croppedData, 0, 0);
+            // Apply contrast enhancement (Removed per user request)
 
             // Save processed image
             const mimeType = fileType || 'image/jpeg';
@@ -1693,24 +1680,7 @@
                     // Draw image
                     ctx.drawImage(img, 0, 0);
 
-                    // Get raw pixel data
-                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                    const data = imageData.data;
-
-                    // Enhancement settings
-                    const contrast = 1.25; // Increase contrast
-                    const brightness = 15; // Slight brightness bump
-
-                    const intercept = 128 * (1 - contrast);
-
-                    for (let i = 0; i < data.length; i += 4) {
-                        // Apply contrast and brightness to RGB channels
-                        data[i] = data[i] * contrast + intercept + brightness;     // R
-                        data[i + 1] = data[i + 1] * contrast + intercept + brightness; // G
-                        data[i + 2] = data[i + 2] * contrast + intercept + brightness; // B
-                    }
-
-                    ctx.putImageData(imageData, 0, 0);
+                    // Contrast and brightness enhancements (Removed per user request)
 
                     // Convert back to higher clarity JPEG blob
                     canvas.toBlob((blob) => {
